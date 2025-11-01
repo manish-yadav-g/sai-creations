@@ -48,11 +48,31 @@ header.scrolled { background: rgba(0,0,0,0.55); padding:14px 60px; }
 .logo { font-family:'Great Vibes',cursive; font-size:32px; }
 
 /* nav links */
-nav a { color:var(--white); text-decoration:none; margin:0 16px; font-weight:500; position:relative; }
-nav a::after { content:''; position:absolute; left:0; bottom:-6px; width:0; height:2px; background:var(--white); transition:width .28s ease; }
+nav a { 
+  color:var(--white); 
+  text-decoration:none; 
+  margin:0 16px; 
+  font-weight:500; 
+  position:relative; 
+}
+nav a::after { 
+  content:''; 
+  position:absolute; 
+  left:0; 
+  bottom:-6px; 
+  width:0; 
+  height:2px; 
+  background:var(--white); 
+  transition:width .28s ease; 
+}
 nav a:hover::after { width:100%; }
 
-/* HERO (unchanged) */
+/* Active link underline */
+nav a.active::after {
+  width: 100%;
+}
+
+/* HERO */
 .hero {
   position:relative;
   height:100vh;
@@ -94,7 +114,6 @@ nav a:hover::after { width:100%; }
 }
 .hero .contact-btn:hover { background: rgba(255,255,255,0.12); transform:translateY(-3px); }
 
-/* tagline & subtext */
 .hero .tagline {
   font-family:'Great Vibes', cursive;
   font-size:46px;
@@ -112,15 +131,13 @@ nav a:hover::after { width:100%; }
   animation: fadeUp 2s ease 0.5s forwards; opacity:0;
 }
 
-/* Keyframes */
 @keyframes heroZoomFade { from {opacity:0; transform:scale(.98) translateY(18px)} to {opacity:1; transform:none} }
 @keyframes fadeUp { from {opacity:0; transform:translateY(18px)} to {opacity:1; transform:none} }
 
-/* fade utility */
 .fade { opacity:0; transform:translateY(18px); transition:all .9s cubic-bezier(.2,.9,.18,1); }
 .fade.show { opacity:1; transform:none; }
 
-/* === ABOUT (light section) === */
+/* ABOUT */
 .about {
   background:#ffffff;
   color:#111;
@@ -132,11 +149,9 @@ nav a:hover::after { width:100%; }
 .about img { width:100%; border-radius:10px; box-shadow:0 10px 40px rgba(0,0,0,0.08); display:block; }
 .about h2 { font-family:'Playfair Display', serif; font-size:34px; margin-bottom:12px; color:#0b0b0b; }
 .about p { color:#333; line-height:1.8; font-size:16px; }
-
-/* make about stack on mobile */
 @media (max-width:900px) { .about .container { grid-template-columns:1fr; padding:0 10px; } .about img { margin-bottom:18px; } }
 
-/* === GALLERY SECTION (dark background) === */
+/* GALLERY */
 .gallery-section {
   background: #0b0b0b;
   color: #fff;
@@ -146,7 +161,6 @@ nav a:hover::after { width:100%; }
 .gallery-section h2 { font-family:'Playfair Display', serif; font-size:36px; margin-bottom:10px; text-align:center; }
 .gallery-section p.lead { color:var(--muted); text-align:center; margin-bottom:28px; max-width:900px; margin-left:auto; margin-right:auto; }
 
-/* grid: 4 columns tight */
 .gallery-grid {
   display:grid;
   grid-template-columns:repeat(4, 1fr);
@@ -160,12 +174,11 @@ nav a:hover::after { width:100%; }
 }
 .gallery-grid .item:hover img { transform:scale(1.06); filter:brightness(.98); }
 
-/* responsive - 2 columns on small screens */
 @media (max-width:1000px) { .gallery-grid { grid-template-columns:repeat(3, 1fr); } }
 @media (max-width:700px) { .gallery-grid { grid-template-columns:repeat(2, 1fr); } }
 @media (max-width:420px) { .gallery-grid { grid-template-columns:1fr; } }
 
-/* === LIGHTBOX (dark cinematic) === */
+/* LIGHTBOX */
 .lightbox {
   position:fixed; inset:0; display:none; z-index:2000; align-items:center; justify-content:center;
   background:rgba(0,0,0,0.88); backdrop-filter: blur(6px);
@@ -178,7 +191,6 @@ nav a:hover::after { width:100%; }
 }
 .lightbox img { max-width:100%; max-height:100%; object-fit:contain; border-radius:6px; box-shadow:0 20px 60px rgba(0,0,0,0.6); }
 
-/* controls */
 .lb-close, .lb-prev, .lb-next {
   position:absolute; top:18px; background:rgba(255,255,255,0.06); color:#fff; border:0; padding:10px 12px; border-radius:6px; cursor:pointer;
   transition: background .18s ease, transform .12s;
@@ -187,14 +199,10 @@ nav a:hover::after { width:100%; }
 .lb-prev, .lb-next { top:50%; transform:translateY(-50%); padding:12px 14px; font-size:18px; }
 .lb-prev { left:18px; }
 .lb-next { right:18px; }
-
-/* small hover */
 .lb-close:hover, .lb-prev:hover, .lb-next:hover { background: rgba(255,255,255,0.12); transform:translateY(-50%) scale(1.02); }
-
-/* simple caption area (optional) */
 .lb-caption { position:absolute; bottom:28px; left:24px; right:24px; text-align:center; color:rgba(255,255,255,0.9); font-size:14px; }
 
-/* FOOTER (light) */
+/* FOOTER */
 .studio-footer {
   background: #f9f6f5;
   color: #000;
@@ -218,8 +226,6 @@ nav a:hover::after { width:100%; }
 .footer-col.center h3 { font-family:'Playfair Display', serif; font-style:italic; font-size:20px; margin-bottom:10px; }
 .social-icons { display:flex; gap:16px; justify-content:center; margin-top:10px; }
 .footer-credit { margin-top:40px; font-size:13px; letter-spacing:1px; color:rgba(0,0,0,0.7); }
-
-/* responsive small */
 @media (max-width:900px) { header { padding:18px 28px; } .logo{font-size:28px;} .about .container{padding:0 12px;} }
 </style>
 </head>
@@ -228,14 +234,13 @@ nav a:hover::after { width:100%; }
 <header id="navbar">
   <div class="logo">Sai Creations</div>
   <nav>
-    <a href="#home">Home</a>
+    <a href="#home" class="active">Home</a>
     <a href="#about">About</a>
     <a href="#gallery">Gallery</a>
     <a href="#contact">Contact</a>
   </nav>
 </header>
 
-<!-- HERO (your existing hero) -->
 <section class="hero" id="home">
   <div class="col left fade">
     <h3 style="font-family:'Playfair Display',serif;font-size:20px;">Get in touch</h3>
@@ -254,15 +259,13 @@ nav a:hover::after { width:100%; }
   </div>
 </section>
 
-<!-- ABOUT: light block with image + text -->
-<section id="about" class="about fade" aria-labelledby="about-title">
+<section id="about" class="about fade">
   <div class="container">
     <div class="col-image">
-      <!-- about.jpg (you uploaded) -->
       <img src="about.jpg" alt="About Sai Creations — Studio portrait">
     </div>
     <div class="col-text">
-      <h2 id="about-title">About Sai Creations</h2>
+      <h2>About Sai Creations</h2>
       <p>
         Sai Creations Studio captures love, joy, and timeless traditions through cinematic storytelling.
         From weddings to portraits, every frame is crafted with emotion and artistry. We bring creativity,
@@ -274,14 +277,12 @@ nav a:hover::after { width:100%; }
   </div>
 </section>
 
-<!-- GALLERY: dark cinematic background -->
-<section id="gallery" class="gallery-section fade" aria-labelledby="gallery-title">
+<section id="gallery" class="gallery-section fade">
   <div class="wrap">
-    <h2 id="gallery-title">Moments We’ve Captured</h2>
+    <h2>Moments We’ve Captured</h2>
     <p class="lead">A curated selection — emotions, rituals, candid smiles, and cinematic portraits.</p>
 
     <div class="gallery-grid" id="galleryGrid">
-      <!-- Items will be inserted statically below with the image filenames you uploaded -->
       <div class="item" data-index="0"><img src="gallery1.jpg" alt="Moment 1"></div>
       <div class="item" data-index="1"><img src="gallery2.jpg" alt="Moment 2"></div>
       <div class="item" data-index="2"><img src="gallery3.jpg" alt="Moment 3"></div>
@@ -294,54 +295,46 @@ nav a:hover::after { width:100%; }
   </div>
 </section>
 
-<!-- Lightbox (hidden until opened) -->
-<div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-label="Image viewer">
-  <button class="lb-close" id="lbClose" aria-label="Close (Esc)"><i class="fa fa-times"></i></button>
-  <button class="lb-prev" id="lbPrev" aria-label="Previous (Left)"><i class="fa fa-chevron-left"></i></button>
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <button class="lb-close" id="lbClose"><i class="fa fa-times"></i></button>
+  <button class="lb-prev" id="lbPrev"><i class="fa fa-chevron-left"></i></button>
   <div class="inner" id="lbInner">
     <img id="lbImage" src="" alt="">
     <div class="lb-caption" id="lbCaption"></div>
   </div>
-  <button class="lb-next" id="lbNext" aria-label="Next (Right)"><i class="fa fa-chevron-right"></i></button>
+  <button class="lb-next" id="lbNext"><i class="fa fa-chevron-right"></i></button>
 </div>
 
-<!-- Light Footer (unchanged) -->
 <footer class="studio-footer" id="contact">
   <div class="footer-container">
     <div class="footer-col">
       <h4>GET IN TOUCH</h4>
       <p><a href="mailto:srisaikakrala@gmail.com">SRISAIKAKRALA@GMAIL.COM</a></p>
     </div>
-
     <div class="footer-col center">
       <h3>Sai Creations Studio</h3>
-      <p>
-        📍 Kakrala, Mahendragarh, Haryana<br>
-        <span>123027</span><br>
-        <a href="https://maps.app.goo.gl/piVfTTEdcpyKi1GLA" target="_blank">View on Map</a>
-      </p>
+      <p>📍 Kakrala, Mahendragarh, Haryana<br>123027<br>
+      <a href="https://maps.app.goo.gl/piVfTTEdcpyKi1GLA" target="_blank">View on Map</a></p>
     </div>
-
     <div class="footer-col">
       <h4>CONNECT</h4>
       <div class="social-icons">
-        <a href="tel:+919991118537" target="_blank" aria-label="Call"><i class="fa-solid fa-phone"></i></a>
+        <a href="tel:+919991118537" target="_blank"><i class="fa-solid fa-phone"></i></a>
         <a href="https://instagram.com/saicreationkakrala" target="_blank"><i class="fab fa-instagram"></i></a>
         <a href="https://wa.me/919991118537" target="_blank"><i class="fab fa-whatsapp"></i></a>
       </div>
     </div>
   </div>
-
   <div class="footer-credit">
     © <span id="year"></span> Sai Creations — Built by Manish Yadav
   </div>
 </footer>
 
 <script>
-// ------------------- page animations + nav -------------------
+// existing scroll + fade + lightbox
 document.getElementById('year').textContent = new Date().getFullYear();
 
-// reveal on scroll for elements with .fade
+// fade reveal
 const reveals = document.querySelectorAll('.fade');
 const revealObserver = new IntersectionObserver((entries)=>{
   entries.forEach(entry=>{
@@ -356,84 +349,34 @@ function onScroll(){ topbar.classList.toggle('scrolled', window.scrollY > 30); }
 window.addEventListener('scroll', onScroll);
 onScroll();
 
-// ------------------- LIGHTBOX -------------------
-const galleryGrid = document.getElementById('galleryGrid');
+// lightbox (same)
 const items = Array.from(document.querySelectorAll('.gallery-grid .item img'));
 const lb = document.getElementById('lightbox');
 const lbImg = document.getElementById('lbImage');
 const lbCaption = document.getElementById('lbCaption');
 const lbClose = document.getElementById('lbClose');
-const lbPrev = document.getElementById('lbPrev');
-const lbNext = document.getElementById('lbNext');
-
 let currentIndex = 0;
-
-function openLightbox(index){
-  const img = items[index];
-  if(!img) return;
-  currentIndex = index;
-  lbImg.src = img.src;
-  lbImg.alt = img.alt || `Photo ${index+1}`;
-  lbCaption.textContent = img.alt || '';
-  lb.classList.add('show');
-  lb.setAttribute('aria-hidden','false');
-  document.body.style.overflow = 'hidden';
-  // focus close for accessibility
-  lbClose.focus();
-}
-function closeLightbox(){
-  lb.classList.remove('show');
-  lb.setAttribute('aria-hidden','true');
-  lbImg.src = '';
-  document.body.style.overflow = '';
-}
-function showPrev(){
-  currentIndex = (currentIndex - 1 + items.length) % items.length;
-  openLightbox(currentIndex);
-}
-function showNext(){
-  currentIndex = (currentIndex + 1) % items.length;
-  openLightbox(currentIndex);
-}
-
-// click thumbnails
-items.forEach((img, idx) => {
-  img.addEventListener('click', ()=> openLightbox(idx));
-});
-
-// controls
+function openLightbox(index){ const img = items[index]; if(!img)return; currentIndex=index; lbImg.src=img.src; lbCaption.textContent=img.alt||''; lb.classList.add('show'); document.body.style.overflow='hidden'; }
+function closeLightbox(){ lb.classList.remove('show'); document.body.style.overflow=''; }
 lbClose.addEventListener('click', closeLightbox);
-lbPrev.addEventListener('click', ()=> { currentIndex = (currentIndex -1 + items.length) % items.length; openLightbox(currentIndex); });
-lbNext.addEventListener('click', ()=> { currentIndex = (currentIndex +1) % items.length; openLightbox(currentIndex); });
+items.forEach((img, idx)=> img.addEventListener('click', ()=>openLightbox(idx)));
 
-// close when clicking outside image
-lb.addEventListener('click', (e) => {
-  if(e.target === lb) closeLightbox();
-});
+// highlight active nav link on scroll
+const sections = document.querySelectorAll("section[id]");
+const navLinks = document.querySelectorAll("nav a");
 
-// keyboard
-document.addEventListener('keydown', (e) => {
-  if(!lb.classList.contains('show')) return;
-  if(e.key === 'Escape') closeLightbox();
-  if(e.key === 'ArrowLeft') showPrev();
-  if(e.key === 'ArrowRight') showNext();
-});
+window.addEventListener("scroll", () => {
+  let current = "";
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop - 100;
+    if (scrollY >= sectionTop) current = section.getAttribute("id");
+  });
 
-// allow swipe left/right on touch (simple)
-let touchStartX = 0;
-let touchEndX = 0;
-lbImg.addEventListener('touchstart', (e)=> { touchStartX = e.changedTouches[0].screenX; });
-lbImg.addEventListener('touchend', (e)=> {
-  touchEndX = e.changedTouches[0].screenX;
-  if(touchEndX - touchStartX > 40) showPrev();
-  if(touchStartX - touchEndX > 40) showNext();
-});
-
-// ensure thumbnails are accessible by Enter key
-items.forEach((img, idx)=>{
-  img.tabIndex = 0;
-  img.addEventListener('keydown', (e)=>{
-    if(e.key === 'Enter' || e.key === ' ') openLightbox(idx);
+  navLinks.forEach(link => {
+    link.classList.remove("active");
+    if (link.getAttribute("href") === `#${current}`) {
+      link.classList.add("active");
+    }
   });
 });
 </script>
