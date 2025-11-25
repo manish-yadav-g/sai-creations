@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Client Login — Sai Creations</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+  
+  <style>
+
+    body{
+      margin:0;
+      background:url('hero.jpg') center/cover no-repeat fixed;
+      font-family:'Poppins',sans-serif;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      height:100vh;
+      backdrop-filter: blur(6px);
+    }
+
+    .overlay {
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,0.5);
+      backdrop-filter:blur(5px);
+    }
+
+    .box{
+      position:relative;
+      z-index:10;
+      background:rgba(255,255,255,0.09);
+      border:1px solid rgba(255,255,255,0.18);
+      padding:32px;
+      border-radius:16px;
+      width:330px;
+      text-align:center;
+      backdrop-filter: blur(12px);
+      box-shadow:0 8px 40px rgba(0,0,0,0.4);
+      color:#fff;
+      animation: fadeIn .9s ease-in-out forwards;
+      opacity:0;
+    }
+
+    @keyframes fadeIn { from{opacity:0; transform:translateY(20px);} to{opacity:1; transform:none;} }
+
+    .box h2{
+      margin-bottom:20px;
+      font-weight:500;
+      font-size:22px;
+      letter-spacing:1px;
+    }
+
+    input{
+      width:100%;
+      padding:12px;
+      margin-top:14px;
+      border:none;
+      border-radius:8px;
+      font-size:15px;
+      outline:none;
+      background:rgba(255,255,255,0.12);
+      color:#fff;
+      border:1px solid rgba(255,255,255,0.2);
+    }
+
+    input::placeholder{
+      color:#bbb;
+    }
+
+    button{
+      width:100%;
+      padding:12px;
+      margin-top:20px;
+      background:#000;
+      color:#fff;
+      border:none;
+      font-size:16px;
+      border-radius:8px;
+      cursor:pointer;
+      transition:all .25s ease;
+      font-weight:500;
+      letter-spacing: .5px;
+    }
+
+    button:hover{
+      background:#222;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 14px rgba(0,0,0,0.4);
+    }
+
+    #msg{
+      margin-top:12px;
+      font-size:14px;
+      font-weight:400;
+      color:#ff4444;
+    }
+    #backBtn {
+  margin-top:18px;
+  background:rgba(255,255,255,0.12);
+  color:#fff;
+  border:1px solid rgba(255,255,255,0.25);
+  padding:10px 16px;
+  border-radius:6px;
+  cursor:pointer;
+  font-size:14px;
+  width:100%;
+  transition:all .2s ease;
+}
+
+#backBtn:hover {
+  background:rgba(255,255,255,0.22);
+}
+
+
+  </style>
+</head>
+
+<body>
+
+<div class="overlay"></div>
+
+  <div class="box">
+
+    <h2>Client Login</h2>
+    <input type="tel" id="mobile" placeholder="📱 Enter Mobile Number">
+    <input type="password" id="password" placeholder="🔒 Enter Password">
+    <button onclick="login()">LOGIN</button>
+    <div id="msg"></div>
+
+    <button onclick="goBack()" id="backBtn">← Back</button>
+
+  </div>
+
+<script src="client-login.js"></script>
+</body>
+</html>

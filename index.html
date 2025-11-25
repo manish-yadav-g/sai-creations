@@ -1,235 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Sai Creations — Modern Wedding Stories</title>
-<link rel="icon" type="image/png" href="favicon.png">
-
-
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500&family=Great+Vibes&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-<style>
-:root {
-  --white: #fff;
-  --dark: #111;
-  --muted: #9a9a9a;
-  --accent: #d9463e;
-  --page-max: 1200px;
-}
-
-/* Reset & base */
-* { box-sizing:border-box; margin:0; padding:0; }
-html { scroll-behavior:smooth; }
-body {
-  font-family: 'Poppins', sans-serif;
-  background-color: var(--dark);
-  color: var(--white);
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
-  overflow-x: hidden;
-}
-
-/* NAV */
-header {
-  position: fixed;
-  top:0; left:0; right:0;
-  z-index:1000;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  padding:20px 60px;
-  border-top:2px solid rgba(255,255,255,0.6);
-  background:transparent;
-  backdrop-filter: blur(8px);
-  transition: all .35s ease;
-}
-header.scrolled { background: rgba(0,0,0,0.55); padding:14px 60px; }
-
-.logo { font-family:'Great Vibes',cursive; font-size:32px; }
-
-/* nav links */
-nav a { 
-  color:var(--white); 
-  text-decoration:none; 
-  margin:0 16px; 
-  font-weight:500; 
-  position:relative; 
-}
-nav a::after { 
-  content:''; 
-  position:absolute; 
-  left:0; 
-  bottom:-6px; 
-  width:0; 
-  height:2px; 
-  background:var(--white); 
-  transition:width .28s ease; 
-}
-nav a:hover::after { width:100%; }
-
-/* Active link underline */
-nav a.active::after {
-  width: 100%;
-}
-
-/* HERO */
-.hero {
-  position:relative;
-  height:100vh;
-  display:grid;
-  grid-template-columns:1fr 1fr 1fr;
-  align-items:center;
-  text-align:center;
-  overflow:hidden;
-}
-.hero::before {
-  content:'';
-  position:absolute; inset:0;
-  background:url('hero.jpg') center/cover no-repeat;
-  transform:scale(1);
-  transition:transform 8s ease-in-out;
-  z-index:-2;
-}
-.hero:hover::before { transform:scale(1.08); }
-.hero::after {
-  content:'';
-  position:absolute; inset:0;
-  background:linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.6));
-  z-index:-1;
-}
-
-.hero .col { position:relative; z-index:1; }
-.hero .left, .hero .right { padding:40px; text-align:left; }
-.hero .right { text-align:right; }
-
-.hero .contact-btn {
-  margin-top:14px;
-  display:inline-block;
-  padding:10px 24px;
-  border:1px solid rgba(255,255,255,0.8);
-  border-radius:6px;
-  text-decoration:none;
-  color:#fff;
-  transition: all .25s ease;
-}
-.hero .contact-btn:hover { background: rgba(255,255,255,0.12); transform:translateY(-3px); }
-
-.hero .tagline {
-  font-family:'Great Vibes', cursive;
-  font-size:46px;
-  color:#fff;
-  text-shadow: 0 2px 10px rgba(0,0,0,0.5);
-  animation: heroZoomFade 1.8s ease forwards;
-  opacity:0;
-}
-.hero .subtext {
-  margin-top:18px;
-  color:var(--muted);
-  font-size:17px;
-  max-width:640px;
-  margin-left:auto; margin-right:auto;
-  animation: fadeUp 2s ease 0.5s forwards; opacity:0;
-}
-
-@keyframes heroZoomFade { from {opacity:0; transform:scale(.98) translateY(18px)} to {opacity:1; transform:none} }
-@keyframes fadeUp { from {opacity:0; transform:translateY(18px)} to {opacity:1; transform:none} }
-
-.fade { opacity:0; transform:translateY(18px); transition:all .9s cubic-bezier(.2,.9,.18,1); }
-.fade.show { opacity:1; transform:none; }
-
-/* ABOUT */
-.about {
-  background:#ffffff;
-  color:#111;
-  padding:80px 30px;
-}
-.about .container {
-  max-width:var(--page-max); margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:center;
-}
-.about img { width:100%; border-radius:10px; box-shadow:0 10px 40px rgba(0,0,0,0.08); display:block; }
-.about h2 { font-family:'Playfair Display', serif; font-size:34px; margin-bottom:12px; color:#0b0b0b; }
-.about p { color:#333; line-height:1.8; font-size:16px; }
-@media (max-width:900px) { .about .container { grid-template-columns:1fr; padding:0 10px; } .about img { margin-bottom:18px; } }
-
-/* GALLERY */
-.gallery-section {
-  background: #0b0b0b;
-  color: #fff;
-  padding:70px 30px;
-}
-.gallery-section .wrap { max-width:var(--page-max); margin:0 auto; }
-.gallery-section h2 { font-family:'Playfair Display', serif; font-size:36px; margin-bottom:10px; text-align:center; }
-.gallery-section p.lead { color:var(--muted); text-align:center; margin-bottom:28px; max-width:900px; margin-left:auto; margin-right:auto; }
-
-.gallery-grid {
-  display:grid;
-  grid-template-columns:repeat(4, 1fr);
-  gap:12px;
-  margin-top:18px;
-}
-.gallery-grid .item { overflow:hidden; border-radius:8px; position:relative; cursor:pointer; }
-.gallery-grid img {
-  width:100%; height:100%; object-fit:cover; display:block;
-  transition: transform .5s ease, filter .4s ease;
-}
-.gallery-grid .item:hover img { transform:scale(1.06); filter:brightness(.98); }
-
-@media (max-width:1000px) { .gallery-grid { grid-template-columns:repeat(3, 1fr); } }
-@media (max-width:700px) { .gallery-grid { grid-template-columns:repeat(2, 1fr); } }
-@media (max-width:420px) { .gallery-grid { grid-template-columns:1fr; } }
-
-/* LIGHTBOX */
-.lightbox {
-  position:fixed; inset:0; display:none; z-index:2000; align-items:center; justify-content:center;
-  background:rgba(0,0,0,0.88); backdrop-filter: blur(6px);
-}
-.lightbox.show { display:flex; animation: fadeIn .18s ease forwards; }
-@keyframes fadeIn { from {opacity:0} to {opacity:1} }
-
-.lightbox .inner {
-  max-width:92%; max-height:92%; position:relative; display:flex; align-items:center; justify-content:center;
-}
-.lightbox img { max-width:100%; max-height:100%; object-fit:contain; border-radius:6px; box-shadow:0 20px 60px rgba(0,0,0,0.6); }
-
-.lb-close, .lb-prev, .lb-next {
-  position:absolute; top:18px; background:rgba(255,255,255,0.06); color:#fff; border:0; padding:10px 12px; border-radius:6px; cursor:pointer;
-  transition: background .18s ease, transform .12s;
-}
-.lb-close { right:18px; top:18px; font-size:18px; }
-.lb-prev, .lb-next { top:50%; transform:translateY(-50%); padding:12px 14px; font-size:18px; }
-.lb-prev { left:18px; }
-.lb-next { right:18px; }
-.lb-close:hover, .lb-prev:hover, .lb-next:hover { background: rgba(255,255,255,0.12); transform:translateY(-50%) scale(1.02); }
-.lb-caption { position:absolute; bottom:28px; left:24px; right:24px; text-align:center; color:rgba(255,255,255,0.9); font-size:14px; }
-
-/* FOOTER */
-.studio-footer {
-  background: #f9f6f5;
-  color: #000;
-  text-align: center;
-  padding: 80px 40px 40px;
-  font-family: 'Poppins', sans-serif;
-}
-.footer-container {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 80px;
-  flex-wrap: wrap;
-  border-top: 1px solid rgba(0,0,0,0.08);
-  border-bottom: 1px solid rgba(0,0,0,0.08);
-  padding: 40px 0;
-}
-.footer-col { flex:1; min-width:220px; }
-.footer-col h4 { font-size:13px; letter-spacing:2px; color: rgba(0,0,0,0.6); margin-bottom:16px; }
-.footer-col p, .footer-col a { color:#000; text-decoration:none; font-size:15px; font-weight:500; }
-.footer-col.center h3 { font-family:'Playfair Display', serif; font-style:italic; font-size:20px; margin-bottom:10px; }
-.social-icons { display:flex; gap:16px; justify-content:center; margin-top:10px; }
-.footer-credit { margin-top:40px; font-size:13px; letter-spacing:1px; color:rgba(0,0,0,0.7); }
-@media (max-width:900px) { header { padding:18px 28px; } .logo{font-size:28px;} .about .container{padding:0 12px;} }
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sai Creations — Modern Wedding Stories</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500&family=Great+Vibes&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -238,24 +16,31 @@ nav a.active::after {
   <nav>
     <a href="#home" class="active">Home</a>
     <a href="#about">About</a>
+    <a href="#services">Services</a>
     <a href="#gallery">Gallery</a>
     <a href="#contact">Contact</a>
-  </nav>
+    <a href="client.html" class="login-btn">Login</a>
+</nav>
 </header>
 
 <section class="hero" id="home">
   <div class="col left fade">
-    <h3 style="font-family:'Playfair Display',serif;font-size:20px;">Get in touch</h3>
-    <a href="https://wa.me/919991118537?text=Hi%2C%20I%27m%20interested%20in%20Sai%20Creations%20services!" class="contact-btn" target="_blank">Contact Us</a>
+    <h3>Get in touch</h3>
+    <!-- WhatsApp with pre-filled message -->
+    <a 
+      href="https://wa.me/919991118537?text=Hi%2C%20I%20came%20from%20your%20Sai%20Creations%20website%20and%20I%20am%20interested%20in%20your%20photography%20services." 
+      class="contact-btn" 
+      target="_blank"
+    >
+      Contact Us
+    </a>
   </div>
-
   <div class="hero-content fade">
     <h1 class="tagline">Capturing Moments, Creating Memories</h1>
-    <p class="subtext">From intimate portraits to grand celebrations, Sai Creations turns fleeting moments into timeless memories — one frame at a time.</p>
+    <p class="subtext">From intimate portraits to grand celebrations, Sai Creations turns fleeting moments into timeless memories.</p>
   </div>
-
   <div class="col right fade">
-    <h3 style="font-family:'Playfair Display',serif;font-size:20px;">Our Instagram</h3>
+    <h3>Our Instagram</h3>
     <p>Follow our creative journey and discover the stories behind every smile.</p>
     <a href="https://instagram.com/saicreationkakrala" class="contact-btn" target="_blank">View Instagram</a>
   </div>
@@ -264,17 +49,68 @@ nav a.active::after {
 <section id="about" class="about fade">
   <div class="container">
     <div class="col-image">
-      <img src="about.jpg" alt="About Sai Creations — Studio portrait">
+      <img src="about.jpg" alt="">
     </div>
     <div class="col-text">
       <h2>About Sai Creations</h2>
       <p>
-        Sai Creations Studio captures love, joy, and timeless traditions through cinematic storytelling.
-        From weddings to portraits, every frame is crafted with emotion and artistry. We bring creativity,
-        careful craft, and a calm, professional presence to every shoot — turning fleeting moments into
-        timeless memories.
+        Sai Creations is a professional photography studio specializing in wedding, portrait, and cinematic storytelling. With years of experience and countless happy clients, we focus on capturing genuine emotions and real moments — not just poses.
       </p>
-      <p style="margin-top:18px; color:#444;">Owner: <strong>Sandeep Yadav</strong></p>
+      <p style="margin-top:14px;">
+        Led by founder <strong>Sandeep Yadav</strong>, we believe every picture should tell a story. We approach every shoot with patience, creativity, and attention to detail, ensuring that you feel comfortable and confident in front of the camera.
+      </p>
+      <p style="margin-top:14px;">
+        Whether it’s a grand wedding celebration or an intimate family session, our mission is to transform your precious memories into timeless visual treasures.
+      </p>
+      <p style="margin-top:18px; color:#444;">
+        📍 Based in Kakrala, Haryana — available for shoots across India.
+      </p>
+      <p style="margin-top:20px; font-size:15px;">
+        📸 700+ events covered &nbsp;&nbsp; | &nbsp;&nbsp; 🎥 Professional Cinematic Videography &nbsp;&nbsp; | &nbsp;&nbsp; ❤️ Trusted by families & couples
+      </p>
+      <div style="margin-top:30px; font-style:italic; font-size:15px; color:#666;">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= SERVICES ================= -->
+<section id="services" class="services fade">
+  <div class="wrap">
+    <h2>Our Services</h2>
+    <p class="lead">Professional photography & videography tailored to your special moments.</p>
+
+    <div class="service-grid">
+      <div class="service-item">
+        <i class="fa-solid fa-heart icon"></i>
+        <h3>Wedding Photography</h3>
+        <p>Candid and traditional coverage of your wedding day.</p>
+      </div>
+      <div class="service-item">
+        <i class="fa-solid fa-ring icon"></i>
+        <h3>Pre-Wedding Shoot</h3>
+        <p>Romantic couple portraits with cinematic framing.</p>
+      </div>
+      <div class="service-item">
+        <i class="fa-solid fa-video icon"></i>
+        <h3>Cinematic Wedding Film</h3>
+        <p>Highlight & documentary style videos.</p>
+      </div>
+      <div class="service-item">
+        <i class="fa-solid fa-drone icon"></i>
+        <h3>Drone & Aerial</h3>
+        <p>Stunning overhead videos and photos.</p>
+      </div>
+      <div class="service-item">
+        <i class="fa-solid fa-users icon"></i>
+        <h3>Family & Kids</h3>
+        <p>Capturing natural laughter, innocence, and love.</p>
+      </div>
+      <div class="service-item">
+        <i class="fa-solid fa-photo-film icon"></i>
+        <h3>Editing & Albums</h3>
+        <p>Professional retouching & album printing.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -282,30 +118,113 @@ nav a.active::after {
 <section id="gallery" class="gallery-section fade">
   <div class="wrap">
     <h2>Moments We’ve Captured</h2>
-    <p class="lead">A curated selection — emotions, rituals, candid smiles, and cinematic portraits.</p>
-
+    <p class="lead">A curated selection — emotions, rituals, candid smiles.</p>
     <div class="gallery-grid" id="galleryGrid">
-      <div class="item" data-index="0"><img src="gallery1.jpg" alt="Moment 1"></div>
-      <div class="item" data-index="1"><img src="gallery2.jpg" alt="Moment 2"></div>
-      <div class="item" data-index="2"><img src="gallery3.jpg" alt="Moment 3"></div>
-      <div class="item" data-index="3"><img src="gallery4.jpg" alt="Moment 4"></div>
-      <div class="item" data-index="4"><img src="gallery5.jpg" alt="Moment 5"></div>
-      <div class="item" data-index="5"><img src="gallery6.jpg" alt="Moment 6"></div>
-      <div class="item" data-index="6"><img src="gallery7.jpg" alt="Moment 7"></div>
-      <div class="item" data-index="7"><img src="gallery9.jpg" alt="Moment 8"></div>
+      <img src="gallery1.jpg" alt="">
+      <img src="gallery2.jpg" alt="">
+      <img src="gallery3.jpg" alt="">
+      <img src="gallery4.jpg" alt="">
+      <img src="gallery5.jpg" alt="">
+      <img src="gallery6.jpg" alt="">
+      <img src="gallery7.jpg" alt="">
+      <img src="gallery9.jpg" alt="">
     </div>
   </div>
 </section>
 
-<div class="lightbox" id="lightbox" aria-hidden="true">
-  <button class="lb-close" id="lbClose"><i class="fa fa-times"></i></button>
-  <button class="lb-prev" id="lbPrev"><i class="fa fa-chevron-left"></i></button>
-  <div class="inner" id="lbInner">
-    <img id="lbImage" src="" alt="">
-    <div class="lb-caption" id="lbCaption"></div>
+<section id="booking" class="fade" style="background:#f0f0f0; color:#000; padding:70px 20px;">
+
+  <div style="max-width:600px; margin:auto; text-align:center;">
+    
+    <h2 style="font-family:'Playfair Display', serif; font-size:34px; margin-bottom:20px;">
+      Booking Inquiry
+    </h2>
+
+    <button id="openBooking">
+   Continue to Booking
+</button>
+
   </div>
-  <button class="lb-next" id="lbNext"><i class="fa fa-chevron-right"></i></button>
-</div>
+
+  <form id="bookingForm" style="display:none; flex-direction:column; gap:16px; max-width:600px; margin:30px auto;">
+
+    <input type="text" id="name" placeholder="Your Name" required
+    style="padding:12px; font-size:15px; border:1px solid #ccc; border-radius:6px;">
+    
+    <input type="tel" id="phone" placeholder="Phone Number" required
+    style="padding:12px; font-size:15px; border:1px solid #ccc; border-radius:6px;">
+    
+    <select id="event" required
+    style="padding:12px; font-size:15px; border:1px solid #ccc; border-radius:6px;">
+      <option value="">Select Event Type</option>
+      <option>Wedding</option>
+      <option>Pre-Wedding</option>
+      <option>Engagement</option>
+      <option>Birthday</option>
+      <option>Baby / Kids Shoot</option>
+      <option>Family Portrait</option>
+      <option>Other</option>
+    </select>
+
+    <input type="date" id="date" required
+    style="padding:12px; font-size:15px; border:1px solid #ccc; border-radius:6px;">
+    
+    <input type="text" id="location" placeholder="Event Location (City / Venue)" required
+    style="padding:12px; font-size:15px; border:1px solid #ccc; border-radius:6px;">
+    
+    <textarea id="message" placeholder="Additional details..." rows="4"
+    style="padding:12px; font-size:15px; border:1px solid #ccc; border-radius:6px;"></textarea>
+
+    <button type="submit"
+    style="padding:14px; font-size:16px; background:#111; color:#fff; border:none; border-radius:6px; cursor:pointer;">
+      Send Booking Request
+    </button>
+
+  </form>
+
+</section>
+
+<section id="faq" class="faq-section fade">
+  <div class="wrap">
+    <h2>Frequently Asked Questions</h2>
+
+    <div class="faq-box">
+
+      <div class="faq-item">
+        <div class="faq-question">📸 How long does it take to receive our photos? <span class="arrow">▶</span></div>
+        <div class="faq-answer">Typically, you’ll receive your final edited photos within 7–28 days.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">📹 Do you provide wedding films & highlight videos? <span class="arrow">▶</span></div>
+        <div class="faq-answer">Yes! We create cinematic highlight films, full wedding videos, and reels.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">🧍 Can you travel outside city for shoots? <span class="arrow">▶</span></div>
+        <div class="faq-answer">Absolutely! We travel anywhere across India.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">📕 Do you provide printed albums? <span class="arrow">▶</span></div>
+        <div class="faq-answer">Yes, premium high–quality album printing is available.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">💳 How do we make a booking? <span class="arrow">▶</span></div>
+        <div class="faq-answer">Just contact us to confirm your date and pay the booking advance.</div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-question">🎞️ Do you provide RAW images/videos? <span class="arrow">▶</span></div>
+        <div class="faq-answer">RAW files can be provided depending on package selection.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
 
 <footer class="studio-footer" id="contact">
   <div class="footer-container">
@@ -321,9 +240,15 @@ nav a.active::after {
     <div class="footer-col">
       <h4>CONNECT</h4>
       <div class="social-icons">
-        <a href="tel:+919991118537" target="_blank"><i class="fa-solid fa-phone"></i></a>
-        <a href="https://instagram.com/saicreationkakrala" target="_blank"><i class="fab fa-instagram"></i></a>
-        <a href="https://wa.me/919991118537" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        <a href="tel:+919991118537"><i class="fa-solid fa-phone"></i></a>
+        <a href="https://instagram.com/saicreationkakrala"><i class="fab fa-instagram"></i></a>
+        <!-- WhatsApp icon with same pre-filled message -->
+        <a 
+          href="https://wa.me/919991118537?text=Hi%2C%20I%20came%20from%20your%20Sai%20Creations%20website%20and%20I%20am%20interested%20in%20your%20photography%20services." 
+          target="_blank"
+        >
+          <i class="fab fa-whatsapp"></i>
+        </a>
       </div>
     </div>
   </div>
@@ -332,56 +257,6 @@ nav a.active::after {
   </div>
 </footer>
 
-<script>
-  
-// existing scroll + fade + lightbox
-document.getElementById('year').textContent = new Date().getFullYear();
-
-// fade reveal
-const reveals = document.querySelectorAll('.fade');
-const revealObserver = new IntersectionObserver((entries)=>{
-  entries.forEach(entry=>{
-    if(entry.isIntersecting){ entry.target.classList.add('show'); revealObserver.unobserve(entry.target); }
-  });
-},{threshold:0.12});
-reveals.forEach(r=>revealObserver.observe(r));
-
-// navbar scroll
-const topbar = document.getElementById('navbar');
-function onScroll(){ topbar.classList.toggle('scrolled', window.scrollY > 30); }
-window.addEventListener('scroll', onScroll);
-onScroll();
-
-// lightbox (same)
-const items = Array.from(document.querySelectorAll('.gallery-grid .item img'));
-const lb = document.getElementById('lightbox');
-const lbImg = document.getElementById('lbImage');
-const lbCaption = document.getElementById('lbCaption');
-const lbClose = document.getElementById('lbClose');
-let currentIndex = 0;
-function openLightbox(index){ const img = items[index]; if(!img)return; currentIndex=index; lbImg.src=img.src; lbCaption.textContent=img.alt||''; lb.classList.add('show'); document.body.style.overflow='hidden'; }
-function closeLightbox(){ lb.classList.remove('show'); document.body.style.overflow=''; }
-lbClose.addEventListener('click', closeLightbox);
-items.forEach((img, idx)=> img.addEventListener('click', ()=>openLightbox(idx)));
-
-// highlight active nav link on scroll
-const sections = document.querySelectorAll("section[id]");
-const navLinks = document.querySelectorAll("nav a");
-
-window.addEventListener("scroll", () => {
-  let current = "";
-  sections.forEach(section => {
-    const sectionTop = section.offsetTop - 100;
-    if (scrollY >= sectionTop) current = section.getAttribute("id");
-  });
-
-  navLinks.forEach(link => {
-    link.classList.remove("active");
-    if (link.getAttribute("href") === `#${current}`) {
-      link.classList.add("active");
-    }
-  });
-});
-</script>
+<script src="script.js"></script>
 </body>
 </html>
