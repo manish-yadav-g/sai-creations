@@ -51,50 +51,60 @@ lightbox.appendChild(lightImg);
 
 lightbox.addEventListener("click", () => {
   lightbox.style.display = "none";
+  document.body.classList.remove("noscroll");
 });
 
 images.forEach((img, index) => {
   img.addEventListener("click", () => {
     showImage(index);
     document.body.classList.add("noscroll");
-    window.scrollTo(0, 0);
   });
 });
+
+function showImage(index) {
+  lightImg.src = images[index].src;
+  lightbox.style.display = "flex";
+}
+
 
 const bookingForm = document.getElementById("bookingForm");
 
 if (bookingForm) {
-  bookingForm.addEventListener("submit", function(e) {
+  bookingForm.addEventListener("submit", function (e) {
     e.preventDefault();
 
-    const nameVal = name.value.trim();
-    const phoneVal = phone.value.trim();
-    const eventVal = event.value;
-    const dateVal = date.value;
-    const locationVal = location.value.trim();
+    const nameVal = document.getElementById("name").value.trim();
+    const phoneVal = document.getElementById("phone").value.trim();
+    const eventVal = document.getElementById("event").value;
+    const dateVal = document.getElementById("date").value;
+    const locationVal = document.getElementById("location").value.trim();
+    const messageVal = document.getElementById("message").value.trim();
 
-    if(!nameVal || !phoneVal || !eventVal || !dateVal || !locationVal){
+    if (!nameVal || !phoneVal || !eventVal || !dateVal || !locationVal) {
       alert("❗ Please fill all required fields.");
       return;
     }
 
-    if(phoneVal.length !== 10 || !/^[0-9]+$/.test(phoneVal)){
+    if (!/^[0-9]{10}$/.test(phoneVal)) {
       alert("❗ Please enter a valid 10-digit phone number.");
       return;
     }
 
-    const msg = `
-New Booking:
-Name: ${nameVal}
-Phone: ${phoneVal}
-Event: ${eventVal}
-Date: ${dateVal}
-Location: ${locationVal}
-Details: ${message.value}`;
+    const msg =
+      `📸 *New Booking Inquiry* 📸\n\n` +
+      `Name: ${nameVal}\n` +
+      `Phone: ${phoneVal}\n` +
+      `Event: ${eventVal}\n` +
+      `Date: ${dateVal}\n` +
+      `Location: ${locationVal}\n` +
+      `Details: ${messageVal}`;
 
-    window.open(`https://wa.me/919991118537?text=${encodeURIComponent(msg)}`);
+    window.open(
+      `https://wa.me/919991118537?text=${encodeURIComponent(msg)}`,
+      "_blank"
+    );
 
-    alert("✅ Your booking has been submitted successfully! We will contact you shortly.");
+    bookingForm.reset();
   });
 }
 
